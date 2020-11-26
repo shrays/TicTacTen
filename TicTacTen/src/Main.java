@@ -46,7 +46,7 @@ public class Main extends Application {
         bPane = new BorderPane();
         font = "Consolas";
         font2 = "Courier New";
-        size1 = 50;
+        size1 = 53;
         size2 = 35;
         size3 = 22;
 
@@ -81,10 +81,10 @@ public class Main extends Application {
         creditGroup = new Group(creditFlow);
 
         headerStack = new StackPane(titleGroup, scoreGroup, creditGroup);
-        StackPane.setAlignment(titleGroup, Pos.BOTTOM_CENTER);
+        StackPane.setAlignment(titleGroup, Pos.CENTER);
         StackPane.setAlignment(scoreGroup, Pos.BOTTOM_RIGHT);
-        StackPane.setAlignment(creditGroup, Pos.BOTTOM_LEFT);
-        headerStack.setPadding(new Insets(5,30,5,30));
+        StackPane.setAlignment(creditGroup, Pos.CENTER_LEFT);
+        headerStack.setPadding(new Insets(9,30,5,30));
         bPane.setTop(headerStack);
         bPane.setBackground(new Background(new BackgroundFill(Color.rgb(0,0,0),CornerRadii.EMPTY,Insets.EMPTY)));
 

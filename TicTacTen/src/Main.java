@@ -47,7 +47,7 @@ public class Main extends Application {
         font = "Consolas";
         font2 = "Courier New";
         size1 = 53;
-        size2 = 35;
+        size2 = 32;
         size3 = 22;
 
         titleFlow = new TextFlow();

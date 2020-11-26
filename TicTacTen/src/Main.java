@@ -47,14 +47,14 @@ public class Main extends Application {
         font = "Consolas";
         font2 = "Courier New";
         size1 = 50;
-        size2 = 25;
-        size3 = 15;
+        size2 = 35;
+        size3 = 22;
 
         titleFlow = new TextFlow();
-        Text title1 = new Text("Tic ");
+        Text title1 = new Text("Tic");
         title1.setFont(Font.font(font, FontWeight.BOLD, size1));
         title1.setFill(Color.rgb(79, 167, 236));
-        Text title2 = new Text("Tac ");
+        Text title2 = new Text("Tac");
         title2.setFill(Color.rgb(236, 79, 79));
         title2.setFont(Font.font(font, FontWeight.BOLD, size1));
         Text title3 = new Text("Ten");
@@ -65,29 +65,26 @@ public class Main extends Application {
 
         scoreFlow = new TextFlow();
         score = new Text("X");
-        score.setFont(Font.font(font2, size2));
+        score.setFont(Font.font(font2, FontWeight.BOLD, size2));
         score.setFill(Color.rgb(236, 79, 79));
         turn = new Text("'s Turn");
-        turn.setFont(Font.font(font2, size2));
+        turn.setFont(Font.font(font2, FontWeight.BOLD, size2));
         turn.setFill(Color.rgb(255, 255, 255));
         scoreFlow.getChildren().addAll(score, turn);
         scoreGroup = new Group(scoreFlow);
 
         creditFlow = new TextFlow();
-        Text credit1 = new Text("github.com/");
-        credit1.setFont(Font.font(font2, size3));
+        Text credit1 = new Text("github.com/\nshrays");
+        credit1.setFont(Font.font(font2,FontWeight.BOLD, size3));
         credit1.setFill(Color.rgb(150, 150, 150));
-        Text credit2 = new Text("shrays");
-        credit2.setFont(Font.font(font2, size3));
-        credit2.setFill(Color.rgb(255, 255, 255));
-        creditFlow.getChildren().addAll(credit1, credit2);
+        creditFlow.getChildren().addAll(credit1);
         creditGroup = new Group(creditFlow);
 
         headerStack = new StackPane(titleGroup, scoreGroup, creditGroup);
         StackPane.setAlignment(titleGroup, Pos.BOTTOM_CENTER);
         StackPane.setAlignment(scoreGroup, Pos.BOTTOM_RIGHT);
         StackPane.setAlignment(creditGroup, Pos.BOTTOM_LEFT);
-        headerStack.setPadding(new Insets(0,30,5,30));
+        headerStack.setPadding(new Insets(5,30,5,30));
         bPane.setTop(headerStack);
         bPane.setBackground(new Background(new BackgroundFill(Color.rgb(0,0,0),CornerRadii.EMPTY,Insets.EMPTY)));
 

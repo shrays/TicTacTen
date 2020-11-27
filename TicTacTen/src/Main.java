@@ -14,18 +14,19 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextFlow;
 import javafx.scene.text.FontWeight;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
 
-/**
+
+/******************************
  * JavaFX Tic-Tac-Ten Project
  * github.com/shrays
- * */
+ *****************************/
 
 
 public class Main extends Application {
 
     private boolean pTurn = true;
     private Button[][] btn = new Button[9][9];
-    private boolean gameOver = false;
     private GridPane board;//, box;
     private GridPane [] box = new GridPane[9];
 
@@ -41,6 +42,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
+        //Image icon = new Image("/TicTacTen_Icon.png");
+        //primaryStage.getIcons().add(icon);
 
         //=====================Header Text====================================
         bPane = new BorderPane();
@@ -81,9 +85,9 @@ public class Main extends Application {
         creditGroup = new Group(creditFlow);
 
         headerStack = new StackPane(titleGroup, scoreGroup, creditGroup);
-        StackPane.setAlignment(titleGroup, Pos.CENTER);
+        StackPane.setAlignment(titleGroup, Pos.BOTTOM_CENTER);
         StackPane.setAlignment(scoreGroup, Pos.BOTTOM_RIGHT);
-        StackPane.setAlignment(creditGroup, Pos.CENTER_LEFT);
+        StackPane.setAlignment(creditGroup, Pos.BOTTOM_LEFT);
         headerStack.setPadding(new Insets(9,30,5,30));
         bPane.setTop(headerStack);
         bPane.setBackground(new Background(new BackgroundFill(Color.rgb(0,0,0),CornerRadii.EMPTY,Insets.EMPTY)));
@@ -142,6 +146,7 @@ public class Main extends Application {
     public static int lastPos1, lastPos2;
     public static boolean [] xBoxes = new boolean[9];
     public static boolean [] oBoxes = new boolean[9];
+    public boolean gameOver = false;
 
     private class Handler implements EventHandler<ActionEvent>
     {
@@ -274,39 +279,41 @@ public class Main extends Application {
                     }
                     box[pos2].setStyle("-fx-background-color: black; -fx-background-insets: 0, 3; -fx-padding: 3;");
                 }
+                pTurn = !pTurn;
 
-                pTurn = !pTurn;
-            }
-            /** GAMEOVER TEST AND VISUALS */
-            if(gameOver)
-            {
-                pTurn = !pTurn;
-                for(int i = 0; i < 9; i++)
+                /** GAMEOVER TEST AND VISUALS */
+                if(gameOver)
                 {
-                    if(pTurn)
-                        box[i].setStyle("-fx-background-color: #c20000; -fx-background-insets: 0, 3; -fx-padding: 3;");
+                    btn[lastPos1][lastPos2].setBorder(new Border(new BorderStroke(Color.rgb(0, 0, 0), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2.0))));
+                    pTurn = !pTurn;
+                    for(int i = 0; i < 9; i++)
+                    {
+                        if(pTurn)
+                            box[i].setStyle("-fx-background-color: #c20000; -fx-background-insets: 0, 3; -fx-padding: 3;");
+                        else
+                            box[i].setStyle("-fx-background-color: #0075c3; -fx-background-insets: 0, 3; -fx-padding: 3;");
+                    }
+
+                    turn.setText(" WINS!");
+                    if(pTurn) {
+                        score.setText("X");
+                        score.setFill(Color.rgb(236, 79, 79));
+                        turn.setFill(Color.rgb(236, 79, 7));
+                    }
                     else
-                        box[i].setStyle("-fx-background-color: #0075c3; -fx-background-insets: 0, 3; -fx-padding: 3;");
-                }
-
-                turn.setText(" WINS!");
-                if(pTurn) {
-                    score.setText("X");
-                    score.setFill(Color.rgb(236, 79, 79));
-                    turn.setFill(Color.rgb(236, 79, 7));
-                }
-                else
-                {
-                    score.setText("O");
-                    score.setFill(Color.rgb(79, 167, 236));
-                    turn.setFill(Color.rgb(79, 167, 236));
-                }
-            } // else if
+                    {
+                        score.setText("O");
+                        score.setFill(Color.rgb(79, 167, 236));
+                        turn.setFill(Color.rgb(79, 167, 236));
+                    }
+                } // else if
+            }
         } // Handle
 
         public void markSquare() /** FILL SQUARE AND CHANGE TEXT */
         {
-            btn[pos1][pos2].setBorder(new Border(new BorderStroke(Color.rgb(200,200,200), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2.0)))); //234, 234, 79
+            /** edit current small indicator */
+            btn[pos1][pos2].setBorder(new Border(new BorderStroke(Color.rgb(200,200,200), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2.0))));
             btn[lastPos1][lastPos2].setBorder(new Border(new BorderStroke(Color.rgb(0, 0, 0), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2.0))));
 
             btn[pos1][pos2].setText(pTurn ? "X" : "O");

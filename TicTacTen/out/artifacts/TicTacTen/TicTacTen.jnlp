@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="TicTacTen.jar" size="7987" download="eager" />
+    <jar href="TicTacTen.jar" size="18759" download="eager" />
   </resources>
   <jfx:javafx-desc  width="600" height="400" main-class="Main"  name="TicTacTen" />
   <update check="background"/>

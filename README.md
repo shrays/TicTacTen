@@ -5,4 +5,6 @@ Rules and Information: https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe
 
 ![](Icon/ExampleGameplay.png)
 
+Mac Application packager by https://github.com/alvinj/JavaPackagerTextArea
+
 
